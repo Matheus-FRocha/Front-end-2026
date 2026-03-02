@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+    <title>Strings em C</title>
+    
+        <style>
+               
+            body{
+                background-color: aquamarine;
+            }
+            
+            h2{
+                text-align: center;
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 38px;
+            }    
+            
+            h3{
+                text-align: center;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                font-size: 36px;
+            }
+
+            h4{
+                text-align: center;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                font-size: 36px;
+                color: red;
+            }
+
+            p{
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+                font-size: 18px;
+            }
+
+            p strong{
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                font-size: 24px;
+            }
+
+            .sobrePosto {  
+                background-color: white;
+	    	    margin: 60px;
+				padding: 20px;
+				border-radius: 10px;
+				box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            }
+        </style>
+
+       <head><h2>NESTE SITE, IREI TE ENSINAR OS COMANDOS BÁSICOS PARA MANIPULAÇÃO DE STRINGS EM C</h2></head>
+
+       <div class="sobrePosto">
+        <body><h4>Se faz necessário para utilizar os comandos de string em C, inserir a biblioteca #include&lt;string.h&gt;</h4>
+        </body>
+            <p><strong>strcpy:</strong>
+                Copia o conteúdo de uma string para outra.
+                Sintaxe: strcpy(destino, origem);
+                <br>A função copia todos os caracteres da string de origem para a string de destino,
+                incluindo o caractere final '\0'.
+                <br><br>
+                <img src="strcpy.png">
+            
+            </p>
+
+            <br><br>
+
+            <p><strong>strncpy:</strong>
+                Funciona de forma semelhante à strcpy, porém permite definir a quantidade máxima de caracteres a serem copiados. Sintaxe: strncpy(destino, origem, n);
+                <br><br>
+                <img src="strncpy.png">
+                <br><br>Nesse caso, apenas os primeiros "n" caracteres da string de origem serão copiados.
+            </p>
+
+            <br><br>
+
+            <p><strong>strcmp:</strong>
+                Compara duas strings. Sintaxe: strcmp(string1, string2);
+                <br>Possui três possíveis retornos:
+                <br>- Valor negativo: string1 é menor que string2
+                <br>- 0: as duas strings são iguais
+                <br>- Valor positivo: string1 é maior que string2
+                <br><br>
+                <img src="strcmp.png">
+            </p>
+
+            <br><br>
+
+            <p><strong>strncmp:</strong>
+                Funciona como strcmp, porém compara apenas uma quantidade específica de caracteres. Sintaxe: strncmp(string1, string2, n);
+                <br><br>
+                <img src="strncmp.png">
+                <br><br>Nesse caso, somente os primeiros "n" caracteres serão comparados.
+            </p>
+
+
+            <br><br>
+            
+            <p><strong>strcat</strong>
+                Concatena (junta) duas strings. Sintaxe: strcat(destino, origem);
+                <br>A string de origem é adicionada ao final da string de destino.
+                <br><br>
+                <img src="strcat.png">
+            </p>
+
+            <br><br>
+
+            <p><strong>strncat</strong>
+                Funciona como strcat, porém concatena apenas uma quantidade limitada de caracteres da segunda string. Sintaxe: strncat(destino, origem, n);
+                <br><br>
+                <img src="strncat.png">
+                <br><br>Nesse caso, apenas os primeiros "n" caracteres da string de origem serão adicionados.
+            </p>
+
+            <br><br>
+
+            <p><strong>strlen</strong>
+                Retorna o tamanho de uma string (quantidade de caracteres antes do '\0').
+                <br>Sintaxe: strlen(string);
+                <br><br>
+                <img src="strlen.png">
+            </p>
+            <h3>Muito obrigado pela leitura do material!</h3>
+        </div>
+
+        <div class="sobrePosto">
+        <form title="Cadastro">
+        <h2>Cadastro</h2>
+            <label for="Nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <br><br>
+
+            <label for="genero">Gênero:</label>
+                <select id="genero" name="genero">
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
+                    <option value="outro">Outro</option>
+            </select>
+
+        </div>
+</html>
