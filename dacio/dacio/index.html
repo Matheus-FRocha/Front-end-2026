@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Pet Virtual</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+        body {
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            transition: background 0.5s ease;
+        }
+    </style>
+</head>
+
+<body style="background-image: url('background.jpg');">
+
+    <div class="flex flex-col items-center justify-between h-screen p-10">
+        
+        <div class="flex items-center gap-4 p-4 bg-white/30 backdrop-blur rounded-full shadow-lg scale-150 mt-10">
+            <input 
+                id="tgl" 
+                type="checkbox" 
+                class="toggle toggle-lg border-indigo-600 bg-indigo-500 checked:border-orange-500 checked:bg-orange-400"
+                onclick="atualizarFundo()"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3949AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </div>
+
+        <div class="w-full max-w-2xl flex-grow flex items-center justify-center">
+            <img id="tigrinho" src="tigrinho.png" alt="Tigrinho" class="w-auto h-[60vh] object-contain"/>
+        </div>
+
+        <div class="avatar cursor-pointer hover:scale-110 transition-transform mb-10">
+            <div class="ring-primary ring-offset-base-100 w-40 rounded-full ring-4 ring-offset-4 shadow-xl">
+                <img id="btn" src="pratocomida.jfif" onclick="alimentar()" alt="Alimentar"/>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const cria = document.getElementById("tigrinho");
+        const tgl = document.getElementById("tgl");
+
+        const estados = {
+            normal: "tigrinho.png",
+            puto: "tigrinhoemfuria.png",
+            morto: "tigrinhomorto.png",
+            comendo: "tigrinhoalimentando.png",
+            alimentado: "tigrinhocomfome.png",
+        };
+
+        let contador = 0; 
+        let intervalo = null;
+        let time_click = null;
+        let time_out = null;
+        
+        let fundoDia = "background.jpg";
+        let fundoNoite = "bandidopreso.jfif";
+
+        function controlador() {
+            if(intervalo) clearInterval(intervalo);
+            
+            intervalo = setInterval(() => {
+                contador++;
+                console.log("Tempo sem comer:", contador);
+                
+                if (contador === 30) {
+                    cria.src = estados.puto;
+                }
+
+                if (contador >= 60) {
+                    cria.src = estados.morto;
+                    clearInterval(intervalo);
+                }
+            }, 1000);
+        }
+
+        function alimentar() {
+            if (contador >= 60) return;
+
+            console.log("Alimentando...");
+            cria.src = estados.alimentado;
+            contador = 0; 
+
+            if(time_click) clearTimeout(time_click);
+            if(time_out) clearTimeout(time_out);
+
+            time_click = setTimeout(() => {
+                cria.src = estados.comendo;
+
+                time_out = setTimeout(() => {
+                    cria.src = estados.normal;
+                }, 1500);
+            }, 1000);
+        }
+
+        function atualizarFundo() {
+            if (tgl.checked) {
+                document.body.style.backgroundImage = `url('${fundoNoite}')`; 
+            } else {
+                document.body.style.backgroundImage = `url('${fundoDia}')`; 
+            }
+        }
+
+        controlador();
+    </script>
+</body>
+</html>
